@@ -196,111 +196,110 @@
   let rootStyle = "";
 
   $: rootStyle = `
-    position: relative;
-    display: inline-block;
-    text-align: left;
-    opacity: ${disabled ? 0.5 : 1};
-    direction: ltr;
-    border-radius: ${height / 2}px;
-    transition: opacity 0.25s;
-    touch-action: none;
-    webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    user-select: none;
-  `;
+      position: relative;
+      display: inline-block;
+      text-align: left;
+      opacity: ${disabled ? 0.5 : 1};
+      direction: ltr;
+      border-radius: ${height / 2}px;
+      transition: opacity 0.25s;
+      touch-action: none;
+      webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      user-select: none;
+    `;
 
   let backgroundStyle = "";
   $: backgroundStyle = `
-    height: ${height}px;
-    width: ${width}px;
-    margin: ${Math.max(0, (state.handleDiameter - height) / 2)}px;
-    position: relative;
-    background: ${getBackgroundColor(
-      state.pos,
-      state.checkedPos,
-      state.uncheckedPos,
-      offColor,
-      onColor
-    )};
-    border-radius: ${height / 2}px;
-    cursor: ${disabled ? "default" : "pointer"};
-    transition: ${state.isDragging ? null : "background 0.25s"};
-  `;
+      height: ${height}px;
+      width: ${width}px;
+      margin: ${Math.max(0, (state.handleDiameter - height) / 2)}px;
+      position: relative;
+      background: ${getBackgroundColor(
+        state.pos,
+        state.checkedPos,
+        state.uncheckedPos,
+        offColor,
+        onColor
+      )};
+      border-radius: ${height / 2}px;
+      cursor: ${disabled ? "default" : "pointer"};
+      transition: ${state.isDragging ? null : "background 0.25s"};
+    `;
 
   let checkedIconStyle = "";
   $: checkedIconStyle = `
-    height: ${height}px;
-    width: ${Math.min(
-      height * 1.5,
-      width - (state.handleDiameter + height) / 2 + 1
-    )}px;
-    position: relative;
-    opacity:
-      ${(state.pos - state.uncheckedPos) /
-        (state.checkedPos - state.uncheckedPos)};
-    pointer-events: none;
-    transition: ${state.isDragging ? null : "opacity 0.25s"};
-  `;
+      height: ${height}px;
+      width: ${Math.min(
+        height * 1.5,
+        width - (state.handleDiameter + height) / 2 + 1
+      )}px;
+      position: relative;
+      opacity:
+        ${(state.pos - state.uncheckedPos) /
+          (state.checkedPos - state.uncheckedPos)};
+      pointer-events: none;
+      transition: ${state.isDragging ? null : "opacity 0.25s"};
+    `;
 
   let uncheckedIconStyle = "";
   $: uncheckedIconStyle = `
-    height: ${height}px;
-    width: ${Math.min(
-      height * 1.5,
-      width - (state.handleDiameter + height) / 2 + 1
-    )}px;
-    position: absolute;
-    opacity:
-      ${1 -
-        (state.pos - state.uncheckedPos) /
-          (state.checkedPos - state.uncheckedPos)};
-    right: 0px;
-    top: 0px;
-    pointer-events: none;
-    transition: ${state.isDragging ? null : "opacity 0.25s"};
-  `;
+      height: ${height}px;
+      width: ${Math.min(
+        height * 1.5,
+        width - (state.handleDiameter + height) / 2 + 1
+      )}px;
+      position: absolute;
+      opacity:
+        ${1 -
+          (state.pos - state.uncheckedPos) /
+            (state.checkedPos - state.uncheckedPos)};
+      right: 0px;
+      top: 0px;
+      pointer-events: none;
+      transition: ${state.isDragging ? null : "opacity 0.25s"};
+    `;
 
   let handleStyle = "";
   $: handleStyle = `
-    height: ${state.handleDiameter}px;
-    width: ${state.handleDiameter}px;
-    background: ${getBackgroundColor(
-      state.pos,
-      state.checkedPos,
-      state.uncheckedPos,
-      offHandleColor,
-      onHandleColor
-    )};
-    display: inline-block;
-    cursor: ${disabled ? "default" : "pointer"};
-    border-radius: 50%;
-    position: absolute;
-    transform: translateX(${state.pos}px);
-    top: ${Math.max(0, (height - state.handleDiameter) / 2)}px;
-    outline: 0;
-    box-shadow: ${state.hasOutline ? activeBoxShadow : boxShadow};
-    border: 0;
-    transition: ${
-      state.isDragging
-        ? null
-        : "background-color 0.25s, transform 0.25s, box-shadow 0.15s"
-    };
-  `;
+      height: ${state.handleDiameter}px;
+      width: ${state.handleDiameter}px;
+      background: ${getBackgroundColor(
+        state.pos,
+        state.checkedPos,
+        state.uncheckedPos,
+        offHandleColor,
+        onHandleColor
+      )};
+      display: inline-block;
+      cursor: ${disabled ? "default" : "pointer"};
+      border-radius: 50%;
+      position: absolute;
+      transform: translateX(${state.pos}px);
+      top: ${Math.max(0, (height - state.handleDiameter) / 2)}px;
+      outline: 0;
+      box-shadow: ${state.hasOutline ? activeBoxShadow : boxShadow};
+      border: 0;
+      transition: ${
+        state.isDragging
+          ? null
+          : "background-color 0.25s, transform 0.25s, box-shadow 0.15s"
+      };
+    `;
 
   let inputStyle = "";
   $: inputStyle = `
-    border: 0px;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0px;
-    position: absolute;
-    width: 1px;
-  `;
+      border: 0px;
+      clip: rect(0 0 0 0);
+      height: 1px;
+      margin: -1px;
+      overflow: hidden;
+      padding: 0px;
+      position: absolute;
+      width: 1px;
+    `;
 </script>
 
 <style>
-
 </style>
 
 <div class={containerClass} style={rootStyle}>
@@ -332,6 +331,7 @@
   <input
     type="checkbox"
     role="switch"
+    checked={checked? "true":"false"}
     {disabled}
     style={inputStyle}
     bind:this={inputRef}
